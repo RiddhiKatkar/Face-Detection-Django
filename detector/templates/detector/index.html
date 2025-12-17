@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Detection App</title>
+    <link rel="stylesheet" href="{% static 'detector/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>Face Detection App</h1>
+            <p>Upload an image to detect faces automatically</p>
+        </header>
+        
+        <div class="upload-section">
+            <form method="post" enctype="multipart/form-data" id="uploadForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_image" class="file-upload-label">
+                        <span class="icon">📁</span> Choose Image
+                    </label>
+                    {{ form.image }}
+                </div>
+                
+                <div id="imagePreviewContainer" class="image-preview-container" style="display: none;">
+                    <p>Preview:</p>
+                    <img id="imagePreview" src="#" alt="Image Preview">
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="btn-label">Upload and Detect Faces</span>
+                    <span class="btn-spinner" aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+
+        {% if instance %}
+        <div class="result-container">
+            <div class="stats">
+                <span class="count-badge">{{ faces_count }}</span>
+                <span class="count-text">Face{% if faces_count != 1 %}s{% endif %} Detected</span>
+            </div>
+            
+            <div class="images-grid">
+                <div class="image-box">
+                    <h3>Original Image</h3>
+                    <div class="image-wrapper">
+                        <img src="{{ instance.image.url }}" alt="Original Image">
+                    </div>
+                </div>
+                <div class="image-box">
+                    <h3>Processed Image</h3>
+                    <div class="image-wrapper">
+                        <img src="{{ instance.processed_image.url }}" alt="Processed Image with Faces Detected">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('id_image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    const container = document.getElementById('imagePreviewContainer');
+                    preview.src = e.target.result;
+                    container.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        (function() {
+            const form = document.getElementById('uploadForm');
+            const btn = form.querySelector('.submit-btn');
+            const label = btn.querySelector('.btn-label');
+            form.addEventListener('submit', function() {
+                btn.disabled = true;
+                btn.classList.add('loading');
+                if (label) label.textContent = 'Detecting...';
+            });
+        })();
+    </script>
+</body>
+</html>

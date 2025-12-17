@@ -1,0 +1,311 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+}
+
+/* Container Card */
+.container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* Header Section */
+.app-header {
+    text-align: center;
+    border-bottom: 2px solid #f0f4f8;
+    padding-bottom: 20px;
+}
+
+.app-header h1 {
+    color: #2d3748;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.app-header p {
+    color: #718096;
+    font-size: 1.1rem;
+}
+
+/* Upload Section */
+.upload-section {
+    background-color: #f7fafc;
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.upload-section:hover {
+    border-color: #667eea;
+    background-color: #ebf8ff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* File Input Styling */
+.form-group {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+input[type="file"] {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.file-upload-label {
+    background-color: white;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.file-upload-label:hover {
+    background-color: #f7fafc;
+    border-color: #cbd5e0;
+    transform: translateY(-1px);
+}
+
+/* Image Preview */
+.image-preview-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    border: 1px solid #e2e8f0;
+    padding: 10px;
+    border-radius: 8px;
+    background: white;
+}
+
+.image-preview-container p {
+    margin-bottom: 5px;
+    color: #718096;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+#imagePreview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Button Styling */
+.submit-btn {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 300px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Results Section */
+.result-container {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 30px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ebf8ff;
+    border-radius: 12px;
+    border-left: 5px solid #4299e1;
+}
+
+.count-badge {
+    background-color: #4299e1;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.count-text {
+    font-size: 1.25rem;
+    color: #2c5282;
+    font-weight: 600;
+}
+
+/* Grid Layout for Images */
+.images-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.image-box {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.image-box:hover {
+    transform: translateY(-5px);
+}
+
+.image-box h3 {
+    background-color: #f7fafc;
+    color: #4a5568;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #e2e8f0;
+    margin: 0;
+    font-weight: 600;
+}
+
+.image-wrapper {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #edf2f7;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .images-grid {
+        flex-direction: column;
+    }
+
+    .image-box {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+/* Override for testing background color */
+body {
+    background: linear-gradient(135deg, #6ee7f9 0%, #a78bfa 100%) !important;
+}
+
+.submit-btn.loading {
+    cursor: progress;
+    opacity: 0.85;
+}
+
+.submit-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    filter: grayscale(20%);
+}
+
+.btn-spinner {
+    display: none;
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.submit-btn.loading .btn-spinner {
+    display: inline-block;
+}
+
+.submit-btn.loading .btn-label {
+    opacity: 0.9;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

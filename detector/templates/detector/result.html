@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detection Result</title>
+</head>
+<body>
+    <h1>Detection Result</h1>
+    <p>Found {{ faces_count }} faces.</p>
+    
+    <h2>Original Image</h2>
+    <img src="{{ instance.image.url }}" width="500">
+    
+    <h2>Processed Image</h2>
+    <img src="{{ instance.processed_image.url }}" width="500">
+    
+    <br><br>
+    <a href="{% url 'detect_faces' %}">Upload another image</a>
+</body>
+</html>
